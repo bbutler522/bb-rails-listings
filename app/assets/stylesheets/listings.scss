@@ -2,6 +2,26 @@
   max-width: 640px;
 }
 
+
+
+
+/* Navbar */
+
+.nav-container{
+	background-color: #eee;
+	margin-bottom: 20px;
+
+	a {
+		color: #000 !important;
+	}
+
+	nav {
+		margin-bottom: 0;
+		border: none;
+		background: none;
+	}
+}
+
 .logo {
   height: 100%;
 }
