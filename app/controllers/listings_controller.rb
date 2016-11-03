@@ -75,4 +75,11 @@ class ListingsController < ApplicationController
     def listing_params
       params.require(:listing).permit(:title, :description, :price, :category_id)
     end
+
+    def listing_owner
+     unless @listing.user_id == current_user.id
+      flash[:notice] = 'Access denied as you are not owner of this Job'
+      redirect_to jobs_path
+     end
+    end
 end
