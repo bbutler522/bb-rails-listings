@@ -4,6 +4,7 @@ class ListingsController < ApplicationController
   before_action :listing_owner, only: [:edit, :update, :destroy]
 
 
+
   # GET /listings
   # GET /listings.json
   def index
@@ -77,7 +78,7 @@ class ListingsController < ApplicationController
     end
 
     def listing_owner
-     unless @listing.user_id == current_user.id
+     unless (@listing.user_id == current_user.id) || current_user.admin?
       flash[:notice] = 'Access denied as you are not owner of this Job'
       redirect_to jobs_path
      end

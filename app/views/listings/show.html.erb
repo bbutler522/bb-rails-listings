@@ -22,7 +22,7 @@
 
 
 <% if current_user %>
-<% if current_user.id == @listing.user_id %>
+<% if current_user.id == @listing.user_id || current_user.admin? %>
 	<%= link_to 'Edit', edit_listing_path(@listing), class: 'btn btn-default' %>
 	<%= link_to 'Destroy', @listing, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
 <% end %>
