@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   resources :categories, only: [:show]
   resources :listings, except: [:index]
+  resources :users
 
   root 'listings#index'
 
   get '/signup'  => 'users#new' 
-  resources :users
 
   get '/login' => 'sessions#new'
   post 'login' => 'sessions#create'
