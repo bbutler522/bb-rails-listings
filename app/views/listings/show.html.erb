@@ -2,17 +2,24 @@
   <%= @listing.title %>
 </h1>
 
-<h4>
-  <strong>Description:</strong>
-  <%= @listing.description %>
-</h4>
-
 <% if @listing.price %>
   <h4>
     <strong>Price:</strong>
     <%= number_to_currency(@listing.price) %>
   </h4>
 <% end %>
+
+<% if @listing.image %>
+  <%= image_tag(@listing.image, :class => "img-responsive") %>
+<% end %>
+
+<h4>
+  <strong>Description:</strong>
+</h4>
+<p><%= @listing.description %></p>
+
+
+
 
 <% if current_user %>
 <% if current_user.id == @listing.user_id %>
