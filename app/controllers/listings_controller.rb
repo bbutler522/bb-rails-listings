@@ -1,6 +1,8 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
-  before_action :require_user, only: [:new, :edit, :destroy]
+  before_action :require_user, only: [:new]
+  before_action :listing_owner, only: [:edit, :update, :destroy]
+
 
   # GET /listings
   # GET /listings.json
@@ -26,6 +28,7 @@ class ListingsController < ApplicationController
   # POST /listings.json
   def create
     @listing = Listing.new(listing_params)
+    @listing.user = current_user
 
     respond_to do |format|
       if @listing.save
